@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nails - Warpaint</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- AOS Animation CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .product-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important;
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.1);
+        }
+        
+        .product-card:hover .overlay {
+            opacity: 1 !important;
+        }
+
+        .product-image {
+            transition: transform 0.5s ease;
+        }
+
+        .overlay {
+            transition: opacity 0.3s ease;
+        }
+
+        .btn {
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .hero-section h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+        }
+
+        .category-btn {
+            transition: all 0.3s ease;
+        }
+
+        .category-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: 70vh !important;
+            }
+        }
+
+        .product-image-wrapper {
+            overflow: hidden;
+            height: 400px;
+        }
+
+        footer a:hover {
+            color: white !important;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .nail-icon {
+            font-size: 3rem;
+            color: #764ba2;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Hero Section -->
+    <section 
+        class="hero-section position-relative overflow-hidden"
+        style="background-image: linear-gradient(rgba(118, 75, 162, 0.7), rgba(102, 126, 234, 0.7)), url('https://images.unsplash.com/photo-1772130204532-5abd45a0e834?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b21hbiUyMG1hbmljdXJlJTIwZWxlZ2FudCUyMGhhbmRzfGVufDF8fHx8MTc3Mzg5NTkyNHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral'); background-size: cover; background-position: center; min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+        <div class="container text-center text-white">
+            <div data-aos="fade-up">
+                <div class="mb-4">
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                </div>
+                <h1 class="display-1 fw-bold mb-4" style="letter-spacing: 3px;">NAILS</h1>
+                <p class="lead mb-4 fs-3" style="letter-spacing: 2px;">Warpaint Collection</p>
+                <p class="fs-5 mb-5" style="max-width: 600px; margin: 0 auto;">
+                    Everything you need for perfect nails - from professional tools to dazzling decorations
+                </p>
+                <a 
+                    href="#collection" 
+                    class="btn btn-light btn-lg px-5 py-3 rounded-pill"
+                    style="letter-spacing: 2px;">
+                    SHOP NOW
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Banner -->
+    <section class="py-5 gradient-bg text-white text-center">
+        <div class="container">
+            <div class="row" data-aos="fade-up">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <i class="bi bi-truck fs-1 mb-2"></i>
+                    <h3 class="h5 mb-2" style="letter-spacing: 1px;">FREE SHIPPING</h3>
+                    <p class="mb-0 small">On orders over $100</p>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <i class="bi bi-award fs-1 mb-2"></i>
+                    <h3 class="h5 mb-2" style="letter-spacing: 1px;">PRO QUALITY</h3>
+                    <p class="mb-0 small">Salon-grade products</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="bi bi-palette fs-1 mb-2"></i>
+                    <h3 class="h5 mb-2" style="letter-spacing: 1px;">ENDLESS OPTIONS</h3>
+                    <p class="mb-0 small">1000+ colors & designs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Filter & Products -->
+    <section id="collection" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="display-4 fw-bold mb-3" style="letter-spacing: 2px; color: #764ba2;">NAIL ESSENTIALS</h2>
+                <p class="text-muted fs-5">Create stunning nail art with professional-grade supplies</p>
+            </div>
+
+            <!-- Category Pills -->
+            <div class="d-flex flex-wrap justify-content-center gap-3 mb-5" data-aos="fade-up" data-aos-delay="100">
+                <button class="btn btn-dark rounded-pill px-4 py-2 category-btn" style="letter-spacing: 1px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none;" data-category="all">
+                    All Products
+                </button>
+                <button class="btn btn-outline-dark rounded-pill px-4 py-2 category-btn" style="letter-spacing: 1px; border-color: #764ba2; color: #764ba2;" data-category="polish">
+                    Polish
+                </button>
+                <button class="btn btn-outline-dark rounded-pill px-4 py-2 category-btn" style="letter-spacing: 1px; border-color: #764ba2; color: #764ba2;" data-category="tools">
+                    Tools
+                </button>
+                <button class="btn btn-outline-dark rounded-pill px-4 py-2 category-btn" style="letter-spacing: 1px; border-color: #764ba2; color: #764ba2;" data-category="gel">
+                    Gel & Acrylic
+                </button>
+                <button class="btn btn-outline-dark rounded-pill px-4 py-2 category-btn" style="letter-spacing: 1px; border-color: #764ba2; color: #764ba2;" data-category="art">
+                    Nail Art
+                </button>
+                <button class="btn btn-outline-dark rounded-pill px-4 py-2 category-btn" style="letter-spacing: 1px; border-color: #764ba2; color: #764ba2;" data-category="care">
+                    Nail Care
+                </button>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="row g-4" id="productGrid">
+                <!-- Product 1 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="polish" data-aos="fade-up" data-aos-delay="0">
+                    <div class="card border-0 shadow-sm h-100 product-card">
+                        <div class="position-relative product-image-wrapper">
+                            <img 
+                                src="https://images.unsplash.com/photo-1664776790218-d0799f7a781a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxuYWlsJTIwcG9saXNoJTIwYm90dGxlcyUyMGx1eHVyeXxlbnwxfHx8fDE3NzM4OTU5MjJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
+                                class="card-img-top product-image w-100 h-100" 
+                                alt="Luxury Nail Polish Collection"
+                                style="object-fit: cover;">
+                            <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" 
+                                style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%); opacity: 0;">
+                                <button class="btn btn-light rounded-pill px-4 py-2" style="letter-spacing: 1px;">
+                                    VIEW DETAILS
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <span class="badge rounded-pill mb-2" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">Best Seller</span>
+                            <h5 class="card-title mb-2" style="letter-spacing: 1px;">Premium Polish Set</h5>
+                            <p class="card-text text-muted small mb-3">12 vibrant colors, long-lasting formula</p>
+                            <p class="h4 mb-3" style="color: #764ba2;">$49</p>
+                            <button class="btn btn-dark rounded-pill w-100 py-2" style="letter-spacing: 1px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none;">
+                                ADD TO CART
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="tools" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card border-0 shadow-sm h-100 product-card">
+                        <div class="position-relative product-image-wrapper">
+                            <img 
+                                src="https://images.unsplash.com/photo-1608112169461-48616144c894?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYW5pY3VyZSUyMHRvb2xzJTIwcHJvZmVzc2lvbmFsfGVufDF8fHx8MTc3Mzg5NTkyMnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
+                                class="card-img-top product-image w-100 h-100" 
+                                alt="Professional Manicure Tools"
+                                style="object-fit: cover;">
+                            <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" 
+                                style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%); opacity: 0;">
+                                <button class="btn btn-light rounded-pill px-4 py-2" style="letter-spacing: 1px;">
+                                    VIEW DETAILS
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <span class="badge bg-dark rounded-pill mb-2">Pro Tools</span>
+                            <h5 class="card-title mb-2" style="letter-spacing: 1px;">Manicure Tool Kit</h5>
+                            <p class="card-text text-muted small mb-3">15-piece professional set, stainless steel</p>
+                            <p class="h4 mb-3" style="color: #764ba2;">$89</p>
+                            <button class="btn btn-dark rounded-pill w-100 py-2" style="letter-spacing: 1px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none;">
+                                ADD TO CART
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="art" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card border-0 shadow-sm h-100 product-card">
+                        <div class="position-relative product-image-wrapper">
+                            <img 
+                                src="https://images.unsplash.com/photo-1772322586754-34c9e6f5be6f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxuYWlsJTIwYXJ0JTIwZ2xpdHRlciUyMHNwYXJrbGV8ZW58MXx8fHwxNzczODk1OTIzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
+                                class="card-img-top product-image w-100 h-100" 
+                                alt="Glitter Collection"
+                                style="object-fit: cover;">
+                            <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" 
+                                style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%); opacity: 0;">
+                                <button class="btn btn-light rounded-pill px-4 py-2" style="letter-spacing: 1px;">
+                                    VIEW DETAILS
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <span class="badge rounded-pill mb-2" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">Trending</span>
+                            <h5 class="card-title mb-2" style="letter-spacing: 1px;">Glitter & Sparkle Set</h5>
+                            <p class="card-text text-muted small mb-3">24 colors, holographic & metallic finishes</p>
+                            <p class="h4 mb-3" style="color: #764ba2;">$35</p>
+                            <button class="btn btn-dark rounded-pill w-100 py-2" style="letter-spacing: 1px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none;">
+                                ADD TO CART
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="gel" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card border-0 shadow-sm h-100 product-card">
+                        <div class="position-relative product-image-wrapper">
+                            <img 
+                                src="https://images.unsplash.com/photo-1661267571825-45b3036a1aed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhY3J5bGljJTIwbmFpbHMlMjBzdXBwbGllc3xlbnwxfHx8fDE3NzM4OTU5MjN8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
+                                class="card-img-top product-image w-100 h-100" 
+                                alt="Acrylic Nail Kit"
+                                style="object-fit: cover;">
+                            <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" 
+                                style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%); opacity: 0;">
+                                <button class="btn btn-light rounded-pill px-4 py-2" style="letter-spacing: 1px;">
+                                    VIEW DETAILS
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <span class="badge bg-dark rounded-pill mb-2">Complete Kit</span>
+                            <h5 class="card-title mb-2" style="letter-spacing: 1px;">Acrylic Starter Kit</h5>
+                            <p class="card-text text-muted small mb-3">Professional acrylic powder & liquid system</p>
+                            <p class="h4 mb-3" style="color: #764ba2;">$129</p>
+                            <button class="btn btn-dark rounded-pill w-100 py-2" style="letter-spacing: 1px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none;">
+                                ADD TO CART
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="gel" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card border-0 shadow-sm h-100 product-card">
+                        <div class="position-relative product-image-wrapper">
+                            <img 
+                                src="https://images.unsplash.com/photo-1512207046665-7592bb0ce5e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnZWwlMjBuYWlsJTIwcG9saXNoJTIwY29sbGVjdGlvbnxlbnwxfHx8fDE3NzM4OTU5MjR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
+                                class="card-img-top product-image w-100 h-100" 
+                                alt="Gel Polish Collection"
+                                style="object-fit: cover;">
+                            <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" 
+                                style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%); opacity: 0;">
+                                <button class="btn btn-light rounded-pill px-4 py-2" style="letter-spacing: 1px;">
+                                    VIEW DETAILS
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <span class="badge rounded-pill mb-2" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">Popular</span>
+                            <h5 class="card-title mb-2" style="letter-spacing: 1px;">Gel Polish Set</h5>
+                            <p class="card-text text-muted small mb-3">UV/LED curing, 30-day wear, 8 colors</p>
+                            <p class="h4 mb-3" style="color: #764ba2;">$79</p>
+                            <button class="btn btn-dark rounded-pill w-100 py-2" style="letter-spacing: 1px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none;">
+                                ADD TO CART
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="art" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card border-0 shadow-sm h-100 product-card">
+                        <div class="position-relative product-image-wrapper">
+                            <img 
+                                src="https://images.unsplash.com/photo-1702396745384-4620eda5bad9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyaGluZXN0b25lJTIwbmFpbCUyMGRlY29yYXRpb25zfGVufDF8fHx8MTc3Mzg5NTkyNHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
+                                class="card-img-top product-image w-100 h-100" 
+                                alt="Rhinestone Decorations"
+                                style="object-fit: cover;">
+                            <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" 
+                                style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%); opacity: 0;">
+                                <button class="btn btn-light rounded-pill px-4 py-2" style="letter-spacing: 1px;">
+                                    VIEW DETAILS
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <span class="badge rounded-pill mb-2" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">New</span>
+                            <h5 class="card-title mb-2" style="letter-spacing: 1px;">Rhinestone & Stones</h5>
+                            <p class="card-text text-muted small mb-3">1000+ pieces, crystals & pearls</p>
+                            <p class="h4 mb-3" style="color: #764ba2;">$29</p>
+                            <button class="btn btn-dark rounded-pill w-100 py-2" style="letter-spacing: 1px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none;">
+                                ADD TO CART
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="care" data-aos="fade-up" data-aos-delay="600">
+                    <div class="card border-0 shadow-sm h-100 product-card">
+                        <div class="position-relative product-image-wrapper">
+                            <img 
+                                src="https://images.unsplash.com/photo-1693776529227-4d6c8799e743?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxuYWlsJTIwY2FyZSUyMHByb2R1Y3RzJTIwYm90dGxlc3xlbnwxfHx8fDE3NzM4OTU5Mjd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
+                                class="card-img-top product-image w-100 h-100" 
+                                alt="Nail Care Essentials"
+                                style="object-fit: cover;">
+                            <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" 
+                                style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%); opacity: 0;">
+                                <button class="btn btn-light rounded-pill px-4 py-2" style="letter-spacing: 1px;">
+                                    VIEW DETAILS
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <span class="badge bg-success rounded-pill mb-2">Organic</span>
+                            <h5 class="card-title mb-2" style="letter-spacing: 1px;">Nail Care Bundle</h5>
+                            <p class="card-text text-muted small mb-3">Cuticle oil, strengthener & nourishing cream</p>
+                            <p class="h4 mb-3" style="color: #764ba2;">$45</p>
+                            <button class="btn btn-dark rounded-pill w-100 py-2" style="letter-spacing: 1px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none;">
+                                ADD TO CART
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="tools" data-aos="fade-up" data-aos-delay="700">
+                    <div class="card border-0 shadow-sm h-100 product-card">
+                        <div class="position-relative product-image-wrapper">
+                            <img 
+                                src="https://images.unsplash.com/photo-1679240219409-51901fb6d2db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxuYWlsJTIwZmlsZSUyMGJ1ZmZlciUyMHRvb2xzfGVufDF8fHx8MTc3Mzg5NTkyN3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
+                                class="card-img-top product-image w-100 h-100" 
+                                alt="Nail Files & Buffers"
+                                style="object-fit: cover;">
+                            <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" 
+                                style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%); opacity: 0;">
+                                <button class="btn btn-light rounded-pill px-4 py-2" style="letter-spacing: 1px;">
+                                    VIEW DETAILS
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <span class="badge bg-dark rounded-pill mb-2">Essential</span>
+                            <h5 class="card-title mb-2" style="letter-spacing: 1px;">Files & Buffers Set</h5>
+                            <p class="card-text text-muted small mb-3">Professional grade, 20-piece collection</p>
+                            <p class="h4 mb-3" style="color: #764ba2;">$39</p>
+                            <button class="btn btn-dark rounded-pill w-100 py-2" style="letter-spacing: 1px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none;">
+                                ADD TO CART
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 9 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="art" data-aos="fade-up" data-aos-delay="800">
+                    <div class="card border-0 shadow-sm h-100 product-card">
+                        <div class="position-relative product-image-wrapper">
+                            <img 
+                                src="https://images.unsplash.com/photo-1664776790218-d0799f7a781a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxuYWlsJTIwcG9saXNoJTIwYm90dGxlcyUyMGx1eHVyeXxlbnwxfHx8fDE3NzM4OTU5MjJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
+                                class="card-img-top product-image w-100 h-100" 
+                                alt="Nail Art Brushes"
+                                style="object-fit: cover;">
+                            <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" 
+                                style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%); opacity: 0;">
+                                <button class="btn btn-light rounded-pill px-4 py-2" style="letter-spacing: 1px;">
+                                    VIEW DETAILS
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <span class="badge bg-info rounded-pill mb-2">Artist's Choice</span>
+                            <h5 class="card-title mb-2" style="letter-spacing: 1px;">Nail Art Brush Set</h5>
+                            <p class="card-text text-muted small mb-3">15 precision brushes, dotting tools included</p>
+                            <p class="h4 mb-3" style="color: #764ba2;">$25</p>
+                            <button class="btn btn-dark rounded-pill w-100 py-2" style="letter-spacing: 1px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none;">
+                                ADD TO CART
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="display-5 fw-bold mb-3" style="letter-spacing: 2px; color: #764ba2;">NAIL CARE TIPS</h2>
+                <p class="text-muted fs-5">Expert advice for perfect nails</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+                    <div class="card border-0 shadow-sm h-100 p-4">
+                        <div class="text-center mb-3">
+                            <i class="bi bi-droplet-fill fs-1" style="color: #667eea;"></i>
+                        </div>
+                        <h5 class="text-center mb-3" style="letter-spacing: 1px;">Keep Them Hydrated</h5>
+                        <p class="text-muted text-center">Apply cuticle oil daily to maintain healthy, strong nails and prevent breakage.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card border-0 shadow-sm h-100 p-4">
+                        <div class="text-center mb-3">
+                            <i class="bi bi-shield-check fs-1" style="color: #764ba2;"></i>
+                        </div>
+                        <h5 class="text-center mb-3" style="letter-spacing: 1px;">Use Base Coat</h5>
+                        <p class="text-muted text-center">Always apply a base coat to protect nails from staining and extend polish wear.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card border-0 shadow-sm h-100 p-4">
+                        <div class="text-center mb-3">
+                            <i class="bi bi-heart-fill fs-1" style="color: #f5576c;"></i>
+                        </div>
+                        <h5 class="text-center mb-3" style="letter-spacing: 1px;">Gentle Care</h5>
+                        <p class="text-muted text-center">Avoid harsh chemicals and always wear gloves when cleaning to protect your manicure.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-5 gradient-bg text-white">
+        <div class="container">
+            <div class="row align-items-center" data-aos="fade-up">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <h3 class="display-5 fw-bold mb-3" style="letter-spacing: 2px;">JOIN OUR NAIL COMMUNITY</h3>
+                    <p class="fs-5">Get exclusive nail art tutorials, tips & special offers</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group input-group-lg">
+                        <input 
+                            type="email" 
+                            class="form-control rounded-start-pill py-3" 
+                            placeholder="Enter your email"
+                            style="border: none;">
+                        <button 
+                            class="btn btn-dark rounded-end-pill px-4" 
+                            type="button"
+                            style="letter-spacing: 1px; background: #000; border: none;">
+                            SUBSCRIBE
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-black text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0" data-aos="fade-up">
+                    <h4 class="mb-4" style="letter-spacing: 2px;">WARPAINT</h4>
+                    <p class="text-muted">Your destination for professional nail care products and beauty essentials</p>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0" data-aos="fade-up" data-aos-delay="100">
+                    <h5 class="mb-4" style="letter-spacing: 1px;">QUICK LINKS</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Nail Tutorials</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Contact Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Shipping Info</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Returns Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <h5 class="mb-4" style="letter-spacing: 1px;">FOLLOW US</h5>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white fs-4">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="#" class="text-white fs-4">
+                            <i class="bi bi-youtube"></i>
+                        </a>
+                        <a href="#" class="text-white fs-4">
+                            <i class="bi bi-tiktok"></i>
+                        </a>
+                        <a href="#" class="text-white fs-4">
+                            <i class="bi bi-pinterest"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 bg-secondary">
+            <div class="text-center text-muted">
+                <p class="mb-0">&copy; 2026 Warpaint. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+
+        // Category Filter Functionality
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const productItems = document.querySelectorAll('.product-item');
+
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                
+                // Update active button
+                categoryButtons.forEach(btn => {
+                    btn.style.background = 'transparent';
+                    btn.style.color = '#764ba2';
+                    btn.style.borderColor = '#764ba2';
+                    btn.classList.remove('btn-dark');
+                    btn.classList.add('btn-outline-dark');
+                });
+                this.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                this.style.color = 'white';
+                this.style.borderColor = 'transparent';
+                
+                // Filter products
+                productItems.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.style.display = 'block';
+                        // Re-trigger AOS animation
+                        item.classList.add('aos-animate');
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

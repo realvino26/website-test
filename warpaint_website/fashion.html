@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion - Warpaint</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- AOS Animation CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .product-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important;
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.1);
+        }
+        
+        .product-card:hover .overlay {
+            opacity: 1 !important;
+        }
+
+        .product-image {
+            transition: transform 0.5s ease;
+        }
+
+        .overlay {
+            transition: opacity 0.3s ease;
+        }
+
+        .btn {
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .hero-section h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+        }
+
+        .category-btn {
+            transition: all 0.3s ease;
+        }
+
+        .category-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: 70vh !important;
+            }
+        }
+
+        .product-image-wrapper {
+            overflow: hidden;
+            height: 400px;
+        }
+
+        footer a:hover {
+            color: white !important;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Hero Section -->
+    <section 
+        class="hero-section position-relative overflow-hidden"
+        style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1761164920960-2d776a18998c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmYXNoaW9uJTIwbW9kZWwlMjBlbGVnYW50JTIwZHJlc3N8ZW58MXx8fHwxNzczNzczMzAwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral'); background-size: cover; background-position: center; min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+        <div class="container text-center text-white">
+            <div data-aos="fade-up">
+                <h1 class="display-1 fw-bold mb-4" style="letter-spacing: 3px;">FASHION</h1>
+                <p class="lead mb-4 fs-3" style="letter-spacing: 2px;">Warpaint Collection</p>
+                <p class="fs-5 mb-5" style="max-width: 600px; margin: 0 auto;">
+                    Elevate your style with our curated selection of luxury fashion accessories
+                </p>
+                <a 
+                    href="#collection" 
+                    class="btn btn-light btn-lg px-5 py-3 rounded-0"
+                    style="letter-spacing: 2px;">
+                    EXPLORE COLLECTION
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Banner -->
+    <section class="py-5 bg-dark text-white text-center">
+        <div class="container">
+            <div class="row" data-aos="fade-up">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h3 class="h5 mb-2" style="letter-spacing: 1px;">FREE SHIPPING</h3>
+                    <p class="mb-0 small">On orders over $150</p>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h3 class="h5 mb-2" style="letter-spacing: 1px;">AUTHENTIC</h3>
+                    <p class="mb-0 small">100% genuine products</p>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="h5 mb-2" style="letter-spacing: 1px;">PREMIUM QUALITY</h3>
+                    <p class="mb-0 small">Handpicked selection</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Filter & Products -->
+    <section id="collection" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="display-4 fw-bold mb-3" style="letter-spacing: 2px;">OUR COLLECTION</h2>
+                <p class="text-muted fs-5">Discover timeless pieces that define elegance</p>
+            </div>
+
+            <!-- Category Pills -->
+            <div class="d-flex flex-wrap justify-content-center gap-3 mb-5" data-aos="fade-up" data-aos-delay="100">
+                <button class="btn btn-dark rounded-pill px-4 py-2 category-btn" style="letter-spacing: 1px;" data-category="all">
+                    All Items
+                </button>
+                <button class="btn btn-outline-dark rounded-pill px-4 py-2 category-btn" style="letter-spacing: 1px;" data-category="bags">
+                    Handbags
+                </button>
+                <button class="btn btn-outline-dark rounded-pill px-4 py-2 category-btn" style="letter-spacing: 1px;" data-category="shoes">
+                    Shoes
+                </button>
+                <button class="btn btn-outline-dark rounded-pill px-4 py-2 category-btn" style="letter-spacing: 1px;" data-category="jewelry">
+                    Jewelry
+                </button>
+                <button class="btn btn-outline-dark rounded-pill px-4 py-2 category-btn" style="letter-spacing: 1px;" data-category="accessories">
+                    Accessories
+                </button>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="row g-4" id="productGrid">
+                <!-- Product 1 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="bags" data-aos="fade-up" data-aos-delay="0">
+                    <div class="card border-0 shadow-sm h-100 product-card">
+                        <div class="position-relative product-image-wrapper">
+                            <img 
+                                src="https://images.unsplash.com/photo-1761646238279-30de81702a97?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwaGFuZGJhZyUyMGZhc2hpb258ZW58MXx8fHwxNzczODk1MDQ2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
+                                class="card-img-top product-image w-100 h-100" 
+                                alt="Luxury Handbag Collection"
+                                style="object-fit: cover;">
+                            <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" 
+                                style="background: rgba(0,0,0,0.5); opacity: 0;">
+                                <button class="btn btn-light rounded-0 px-4 py-2" style="letter-spacing: 1px;">
+                                    VIEW DETAILS
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <h5 class="card-title mb-2" style="letter-spacing: 1px;">Luxury Handbag Collection</h5>
+                            <p class="card-text text-muted small mb-3">Elegant leather handbag</p>
+                            <p class="h4 mb-3">$299</p>
+                            <button class="btn btn-dark rounded-0 w-100 py-2" style="letter-spacing: 1px;">
+                                ADD TO CART
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="accessories" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card border-0 shadow-sm h-100 product-card">
+                        <div class="position-relative product-image-wrapper">
+                            <img 
+                                src="https://images.unsplash.com/photo-1760446032732-c042b0d43580?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkZXNpZ25lciUyMHN1bmdsYXNzZXMlMjB3b21lbnxlbnwxfHx8fDE3NzM4OTUwNDd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
+                                class="card-img-top product-image w-100 h-100" 
+                                alt="Designer Sunglasses"
+                                style="object-fit: cover;">
+                            <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" 
+                                style="background: rgba(0,0,0,0.5); opacity: 0;">
+                                <button class="btn btn-light rounded-0 px-4 py-2" style="letter-spacing: 1px;">
+                                    VIEW DETAILS
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <h5 class="card-title mb-2" style="letter-spacing: 1px;">Designer Sunglasses</h5>
+                            <p class="card-text text-muted small mb-3">UV protection & style</p>
+                            <p class="h4 mb-3">$189</p>
+                            <button class="btn btn-dark rounded-0 w-100 py-2" style="letter-spacing: 1px;">
+                                ADD TO CART
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="jewelry" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card border-0 shadow-sm h-100 product-card">
+                        <div class="position-relative product-image-wrapper">
+                            <img 
+                                src="https://images.unsplash.com/photo-1758995115560-59c10d6cc28f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmYXNoaW9uJTIwamV3ZWxyeSUyMGdvbGR8ZW58MXx8fHwxNzczODk1MDQ3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
+                                class="card-img-top product-image w-100 h-100" 
+                                alt="Gold Statement Jewelry"
+                                style="object-fit: cover;">
+                            <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" 
+                                style="background: rgba(0,0,0,0.5); opacity: 0;">
+                                <button class="btn btn-light rounded-0 px-4 py-2" style="letter-spacing: 1px;">
+                                    VIEW DETAILS
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <h5 class="card-title mb-2" style="letter-spacing: 1px;">Gold Statement Jewelry</h5>
+                            <p class="card-text text-muted small mb-3">Handcrafted elegance</p>
+                            <p class="h4 mb-3">$249</p>
+                            <button class="btn btn-dark rounded-0 w-100 py-2" style="letter-spacing: 1px;">
+                                ADD TO CART
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="shoes" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card border-0 shadow-sm h-100 product-card">
+                        <div class="position-relative product-image-wrapper">
+                            <img 
+                                src="https://images.unsplash.com/photo-1621996659490-3275b4d0d951?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b21lbiUyMGZhc2hpb24lMjBzaG9lcyUyMGhlZWxzfGVufDF8fHx8MTc3Mzg5NTA0OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
+                                class="card-img-top product-image w-100 h-100" 
+                                alt="Premium Heels"
+                                style="object-fit: cover;">
+                            <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" 
+                                style="background: rgba(0,0,0,0.5); opacity: 0;">
+                                <button class="btn btn-light rounded-0 px-4 py-2" style="letter-spacing: 1px;">
+                                    VIEW DETAILS
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <h5 class="card-title mb-2" style="letter-spacing: 1px;">Premium Heels</h5>
+                            <p class="card-text text-muted small mb-3">Comfort meets luxury</p>
+                            <p class="h4 mb-3">$329</p>
+                            <button class="btn btn-dark rounded-0 w-100 py-2" style="letter-spacing: 1px;">
+                                ADD TO CART
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="accessories" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card border-0 shadow-sm h-100 product-card">
+                        <div class="position-relative product-image-wrapper">
+                            <img 
+                                src="https://images.unsplash.com/photo-1551028442-ee84b4d3a50a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzaWxrJTIwc2NhcmYlMjBmYXNoaW9ufGVufDF8fHx8MTc3Mzg1ODgwMHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
+                                class="card-img-top product-image w-100 h-100" 
+                                alt="Silk Scarf"
+                                style="object-fit: cover;">
+                            <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" 
+                                style="background: rgba(0,0,0,0.5); opacity: 0;">
+                                <button class="btn btn-light rounded-0 px-4 py-2" style="letter-spacing: 1px;">
+                                    VIEW DETAILS
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <h5 class="card-title mb-2" style="letter-spacing: 1px;">Silk Scarf</h5>
+                            <p class="card-text text-muted small mb-3">Timeless accessory</p>
+                            <p class="h4 mb-3">$129</p>
+                            <button class="btn btn-dark rounded-0 w-100 py-2" style="letter-spacing: 1px;">
+                                ADD TO CART
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="accessories" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card border-0 shadow-sm h-100 product-card">
+                        <div class="position-relative product-image-wrapper">
+                            <img 
+                                src="https://images.unsplash.com/photo-1769240171986-d4ba22cf3154?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjB3YXRjaCUyMHdvbWVufGVufDF8fHx8MTc3Mzg5NTA0OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
+                                class="card-img-top product-image w-100 h-100" 
+                                alt="Luxury Watch"
+                                style="object-fit: cover;">
+                            <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" 
+                                style="background: rgba(0,0,0,0.5); opacity: 0;">
+                                <button class="btn btn-light rounded-0 px-4 py-2" style="letter-spacing: 1px;">
+                                    VIEW DETAILS
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <h5 class="card-title mb-2" style="letter-spacing: 1px;">Luxury Watch</h5>
+                            <p class="card-text text-muted small mb-3">Swiss precision</p>
+                            <p class="h4 mb-3">$599</p>
+                            <button class="btn btn-dark rounded-0 w-100 py-2" style="letter-spacing: 1px;">
+                                ADD TO CART
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-5 bg-dark text-white">
+        <div class="container">
+            <div class="row align-items-center" data-aos="fade-up">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <h3 class="display-5 fw-bold mb-3" style="letter-spacing: 2px;">STAY IN STYLE</h3>
+                    <p class="fs-5">Subscribe to receive exclusive offers and new arrivals</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group input-group-lg">
+                        <input 
+                            type="email" 
+                            class="form-control rounded-0 py-3" 
+                            placeholder="Enter your email"
+                            style="border: none;">
+                        <button 
+                            class="btn btn-light rounded-0 px-4" 
+                            type="button"
+                            style="letter-spacing: 1px;">
+                            SUBSCRIBE
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-black text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0" data-aos="fade-up">
+                    <h4 class="mb-4" style="letter-spacing: 2px;">WARPAINT</h4>
+                    <p class="text-muted">Redefining beauty and fashion for the modern woman</p>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0" data-aos="fade-up" data-aos-delay="100">
+                    <h5 class="mb-4" style="letter-spacing: 1px;">QUICK LINKS</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Contact</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Shipping</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Returns</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <h5 class="mb-4" style="letter-spacing: 1px;">FOLLOW US</h5>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white fs-4">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="#" class="text-white fs-4">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="#" class="text-white fs-4">
+                            <i class="bi bi-pinterest"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 bg-secondary">
+            <div class="text-center text-muted">
+                <p class="mb-0">&copy; 2026 Warpaint. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+
+        // Category Filter Functionality
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const productItems = document.querySelectorAll('.product-item');
+
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                
+                // Update active button
+                categoryButtons.forEach(btn => {
+                    btn.classList.remove('btn-dark');
+                    btn.classList.add('btn-outline-dark');
+                });
+                this.classList.remove('btn-outline-dark');
+                this.classList.add('btn-dark');
+                
+                // Filter products
+                productItems.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.style.display = 'block';
+                        // Re-trigger AOS animation
+                        item.classList.add('aos-animate');
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
